@@ -3,18 +3,24 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "fake1@fake.com",
-    "password": "abc123"
+    "email": "test@test.com",
+    "password": "password"
 }
 
-### signin
+### sign in as an existing user
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "fake1@fake.com",
-    "password": "abc123"
+    "email": "test@test.com",
+    "password": "password"
 }
+
+### get the currently signed in user
+GET http://localhost:3000/auth/whoami
+
+### sign out
+POST http://localhost:3000/auth/signout
 
 ### find a  user with a given ID
 GET http://localhost:3000/auth/4
