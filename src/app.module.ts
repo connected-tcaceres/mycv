@@ -17,17 +17,19 @@ const cookieSession = require('cookie-session');
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
-          synchronize: true,
-          entities: [User, Report],
-        };
-      },
-    }),
+    TypeOrmModule.forRoot(),
+    // ***** removing so we can use typeorm cli migrations *****
+    // TypeOrmModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: (config: ConfigService) => {
+    //     return {
+    //       type: 'sqlite',
+    //       database: config.get<string>('DB_NAME'),
+    //       synchronize: true,
+    //       entities: [User, Report],
+    //     };
+    //   },
+    // }),
     // ***** without @nestjs/config *****
     // TypeOrmModule.forRoot({
     //   type: 'sqlite',
